@@ -1,0 +1,14 @@
+0x3000  ; Program starting address
+0x5DA0  ; AND R6, R6, #0  -> Clear R6 for halt
+0x5020  ; AND R0, R0, #0  -> Clear R0
+0x103F  ; ADD R0, R0, #-1 -> R0 = 0xFFFF
+0xD401  ; LSHF R2, R0, #1 -> R2 = 0xFFFE
+0xD611  ; RSHFL R3, R0, #1 -> R3 = 0x7FFF
+0xD831  ; RSHFA R4, R0, #1 -> R4 = 0xFFFF
+0xE205  ; LEA R1, data    -> R1 = 0x3018
+0x2A40  ; LDB R5, R1, #0  -> Load low byte 0xFF; R5 = 0xFFFF
+0x2041  ; LDB R0, R1, #1  -> Load high byte 0x80; R0 = 0xFF80
+0x3481  ; STB R2, R1, #1  -> Store 0xFE into high byte
+0x6640  ; LDW R3, R1, #0  -> R3 = 0xFEFF
+0xC180  ; JMP R6          -> Halt: PC becomes 0x0000
+0x80FF  ; Data word at address 0x3018; not an instruction

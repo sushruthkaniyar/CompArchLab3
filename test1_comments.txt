@@ -1,0 +1,22 @@
+0x3000  ; Program starting address
+0x1025  ; ADD R0, R0, #5       Test immediate addition; R0 = 0x0005
+0x1263  ; ADD R1, R1, #3       Test immediate addition; R1 = 0x0003
+0x5601  ; AND R3, R0, R1       Test register AND; R3 = 0x0001
+0x9801  ; XOR R4, R0, R1       Test XOR; R4 = 0x0006
+0xA03F  ; NOT R5, R0           Test bitwise NOT; R5 = 0xFFFA
+0xDC01  ; LSHF R6, R0, #1      Test left shift; R6 = 0x000A
+0xDD61  ; RSHFL R6, R5, #1     Test logical right shift
+0xDD71  ; RSHFA R6, R5, #1     Test arithmetic right shift
+0xE40B  ; LEA R2, data         Test PC-relative address generation
+0x2880  ; LDB R4, R2, #0       Test signed byte load
+0x2A81  ; LDB R5, R2, #1       Test signed byte load from odd address
+0x3280  ; STB R1, R2, #0       Test byte store and memory lane selection
+0x2880  ; LDB R4, R2, #0       Reload stored byte; test sign extension
+0x7080  ; STW R0, R2, #0       Test word store
+0x6680  ; LDW R3, R2, #0       Test word load
+0x1C1B  ; ADD R6, R0, #-5      Test negative immediate; result should be zero
+0x0401  ; BRz +1               Test condition codes and taken branch
+0x1FE1  ; ADD R7, R7, #1       Should be skipped by branch
+0x1FE2  ; ADD R7, R7, #2       Should execute; R7 = 0x0002
+0xC180  ; JMP R6               Test register-indirect jump
+0xF080  ; TRAP x80             Included as a trap test (not reached)
